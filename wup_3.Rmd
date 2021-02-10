@@ -37,14 +37,34 @@ basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='e
 
 This Boxplot shows that the heavy drinkers are mostly in the back  
 
-## Numerical Summarys 
-
-## Inferential Tests
+## Numerical Summarys
 
 ```{r}
 favstats(alcohol~Seat,data=ucdavis1)
 ```
+
 People who sit in the back drink more than the people in the front or middle rows.  
+
+## Inferential Tests
+
+# Inferential
+
+```{r}
+model1 <- aov(alcohol~Seat,data=davisdata)
+summary.aov(model1)
+```
+
+The P value is so small that it is unlikely that alcohol consumption in all three seats is the same.  
+
+## When significant follow up with TukeyHSD  
+
+```{r}
+plot(TukeyHSD(model1))
+```
+
+The TukyHSD plot shows that the back are more of heavy drinkers than the people in front. it shows that the middle back also drink more than the front.The middle front shows theres no evidence of difference in the alcohol consumption.  
+
 ## Conclusions
 
+Yes theres a difference and evidence shows most people consume alcohol tend to sit in the back.  
 
